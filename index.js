@@ -389,4 +389,4 @@ class OpentokConsultations extends EventEmitter {
   }
 }
 
-module.exports = OpentokConsultations;
+export default OpentokConsultations;
