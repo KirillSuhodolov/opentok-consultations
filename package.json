@@ -1,6 +1,6 @@
 {
-  "name": "opentok-consultations",
-  "version": "1.0.1",
+  "name": "opentok-calls",
+  "version": "1.0.2",
   "description": "Open Tok library Wrapper to make video calls like in Skype",
   "main": "lib/index.js",
   "scripts": {
@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KirillSuhodolov/opentok-consultations.git"
+    "url": "git+https://github.com/KirillSuhodolov/opentok-calls.git"
   },
   "keywords": [
     "opentok",
@@ -27,7 +27,7 @@
   "author": "Kirill Suhodolov <kirillsuhodolov@gmail.com> (kirillsuhodolov.github.io)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/KirillSuhodolov/opentok-consultations/issues"
+    "url": "https://github.com/KirillSuhodolov/opentok-calls/issues"
   },
-  "homepage": "https://github.com/KirillSuhodolov/opentok-consultations#readme"
+  "homepage": "https://github.com/KirillSuhodolov/opentok-calls#readme"
 }
