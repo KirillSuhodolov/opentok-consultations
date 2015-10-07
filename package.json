@@ -2,13 +2,17 @@
   "name": "opentok-consultations",
   "version": "1.0.0",
   "description": "Open Tok library Wrapper to make video calls like in Skype",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
   },
   "dependencies": {
-    "babel": "5.1.10",
     "eventemitter3": "^1.1.1"
+  },
+  "devDependencies": {
+    "babel": "5.1.10",
   },
   "repository": {
     "type": "git",
