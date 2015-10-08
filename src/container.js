@@ -49,7 +49,7 @@ let container = {
 	  this.connections = [];
 	  this.subscribers = [];
 
-    this.opentokCalls.emitEvent(propertyName, this[propertyName]);
+    this.opentokCalls.emitEvent();
   }
 };
 

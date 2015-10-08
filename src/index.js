@@ -80,11 +80,15 @@ class OpentokCalls extends EventEmitter {
 
   // privte method
   emitEvent(key, value) {
-    this.emit(key, value);
+    if (key && value) {
+      this.emit(key, value);
 
-    this.emit('property-changed', key, value);
+      this.emit('property-changed', key, value);
+    }
 
     this.emit('hash-changed', {
+      isConnectionCreated: this.isConnectionCreated,
+      isSessionConnected: this.isSessionConnected,
       isCalling: this.isCalling,
       isCallGoes: this.isCallGoes,
       canBePublished: this.canBePublished,
