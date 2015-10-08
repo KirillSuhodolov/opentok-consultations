@@ -54,7 +54,7 @@ class OpentokCalls extends EventEmitter {
     return container.opentokSession;
   }
 
-  get localStream() {
+  get hasLocalStream() {
     return container.localStream;
   }
 
@@ -82,7 +82,7 @@ class OpentokCalls extends EventEmitter {
       canBePubslished: this.canBePubslished,
       hasPublisher: this.hasPublisher,
       hasSession: this.hasSession,
-      localStream: this.localStream,
+      hasLocalStream: this.hasLocalStream,
       isAnyStream: this.isAnyStream,
       isAnyConnection: this.isAnyConnection,
       isAnySubscribers: this.isAnySubscribers,
