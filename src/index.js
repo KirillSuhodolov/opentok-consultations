@@ -32,6 +32,14 @@ class OpentokCalls extends EventEmitter {
   }
 
   // public properties to detect status
+  get isSessionConnected() {
+    return container.isSessionConnected;  
+  }
+
+  get isConnectionCreated() {
+    return container.isConnectionCreated;  
+  }
+
   get isCalling() {
     return (container.opentokSession && container.isSessionConnected && container.isConnectionCreated) &&
     (!container.publisher || !container.subscribers.length || !container.streams.length || !container.localStream);
@@ -42,8 +50,8 @@ class OpentokCalls extends EventEmitter {
       container.publisher && container.subscribers.length && container.streams.length && container.localStream;
   }
 
-  get canBePubslished() {
-    return container.opentokSession && container.isSessionConnected && container.sConnectionCreated && !container.publisher;
+  get canBePublished() {
+    return container.opentokSession && container.isSessionConnected && container.isConnectionCreated && !container.publisher;
   }
 
   get hasPublisher() {
@@ -79,7 +87,7 @@ class OpentokCalls extends EventEmitter {
     this.emit('hash-changed', {
       isCalling: this.isCalling,
       isCallGoes: this.isCallGoes,
-      canBePubslished: this.canBePubslished,
+      canBePublished: this.canBePublished,
       hasPublisher: this.hasPublisher,
       hasSession: this.hasSession,
       hasLocalStream: this.hasLocalStream,

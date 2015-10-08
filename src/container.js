@@ -23,22 +23,6 @@ let container = {
 	// your subscribers on participants streams
   subscribers: [],
 
-  // Methods to change container content and emit events
-  setToContainer(propertyName, value) {
-    this[propertyName] = value;
-    this.emitEvent(propertyName, propertyName, this[propertyName]);
-  },
-
-  addToContainer(propertyName, value) {
-    this[propertyName].push(value);
-    this.emitEvent(propertyName, propertyName, this[propertyName]);
-  },
-
-  removeFromContainer(propertyName, value) {
-    this[propertyName].splice(this[propertyName].indexOf(value), 1);
-    this.emitEvent(propertyName, propertyName, this[propertyName]);
-  },
-
   changeContainer(action, propertyName, value) {
     switch(action) {
       case 'set':
