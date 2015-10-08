@@ -3,7 +3,7 @@ import container from './container';
 import controls from './controls';
 import publisher from './publisher';
 import session from './session';
-import subscribers from './subscribers';
+import subscriber from './subscriber';
 
 /**
  * possible events for subscription are container fields:
