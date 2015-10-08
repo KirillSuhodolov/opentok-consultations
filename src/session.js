@@ -22,7 +22,7 @@ let session = {
 
     if (OT.checkSystemRequirements() !== 1) { alert('Sorry, but your browser not support WebRTC'); }
 
-    return OT.initSession(this.opentokCalls.configs.apiKey, sessionId);
+    return OT.initSession(this.opentokCalls.configs.key, sessionId);
   },
 
   /**
