@@ -11,6 +11,8 @@ let subscriber = {
       var params = this.opentokCalls.configs.remoteVideoOptions;
 
       var subscriber = container.opentokSession.subscribe(stream, targetElement, params, error => {
+        subscriber.restrictFrameRate(true);
+        
         container.changeContainer('add', 'subscribers', subscriber);
 
         if (error) {
