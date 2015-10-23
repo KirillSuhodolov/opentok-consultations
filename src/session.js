@@ -34,6 +34,7 @@ let session = {
    * @param event
    */
   _streamCreatedInSession(event) {
+    console.debug("Stream created in session callback called.");
     if (event.stream.connection.connectionId !== container.opentokSession.connection.connectionId) {
       subscriber.subscribe(event.stream);
       container.changeContainer('add', 'streams', event.stream);
@@ -46,6 +47,7 @@ let session = {
    * @param event
    */
   _streamDestroyedInSession(event) {
+    console.debug("Stream destroyed in session callback called.");
     if (container.opentokSession) {
       if (event.stream.connection.connectionId !== container.opentokSession.connection.connectionId) {
         subscriber.unsubscribe(event.stream);
@@ -59,9 +61,11 @@ let session = {
 
   /**
    * Fires on every local and remote connection.
+   * Don't fired on codova ios
    * @param event
    */
   _connectionCreated(event) {
+    console.debug("Connection created callback called.");
     if (event.connection.connectionId === container.opentokSession.connection.connectionId) {
       container.changeContainer('set', 'isConnectionCreated', true);
     } else {
@@ -71,9 +75,11 @@ let session = {
 
   /**
    * Fires on every local and remote connection.
+   * Don't fired on codova ios
    * @param event
    */
   _connectionDestroyed(event) {
+    console.debug("Connection destroyed callback called.");
     if (container.opentokSession) {
       if (event.connection.connectionId === container.opentokSession.connection.connectionId) {
         container.changeContainer('set', 'isConnectionCreated', false);
