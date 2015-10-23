@@ -24,8 +24,6 @@ let container = {
   subscribers: [],
 
   changeContainer(action, propertyName, value) {
-    console.debug("Change container called.", action, propertyName);
-
     switch(action) {
       case 'set':
         this[propertyName] = value;
