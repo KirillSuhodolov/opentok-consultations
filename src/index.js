@@ -13,17 +13,6 @@ class OpentokCalls extends EventEmitter {
     super();
 
     this.configs = configs;
-
-    // this.controls = controls;
-    // this.publisher = publisher;
-    // this.session = session;
-    // this.subscriber = subscriber;
-
-    // this.controls.opentokCalls = this;
-    // this.publisher.opentokCalls = this;
-    // this.session.opentokCalls = this;
-    // this.subscriber.opentokCalls = this;
-
     container.opentokCalls = this;
     controls.opentokCalls = this;
     publisher.opentokCalls = this;
@@ -46,12 +35,12 @@ class OpentokCalls extends EventEmitter {
   }
 
   get isCallGoes() {
-     return container.opentokSession && container.isSessionConnected && container.isConnectionCreated &&
-      container.publisher && container.subscribers.length && container.streams.length && container.localStream;
+    return container.opentokSession && container.isSessionConnected && container.publisher &&
+      container.subscribers.length && container.streams.length && container.localStream;
   }
 
   get canBePublished() {
-    return container.opentokSession && container.isSessionConnected && container.isConnectionCreated && !container.publisher;
+    return container.opentokSession && container.isSessionConnected && !container.publisher;
   }
 
   get hasPublisher() {
@@ -112,6 +101,10 @@ class OpentokCalls extends EventEmitter {
 
     let opentokSession = session.createSession(sessionId);
 
+    container.changeContainer('set', 'opentokSession', opentokSession);
+
+    session.subscribeSession();
+
     opentokSession.connect(token, function(error) {
       if (error) {
         console.error("Error connecting: ", error);
@@ -119,10 +112,6 @@ class OpentokCalls extends EventEmitter {
         console.debug("Connect to the session...");
       }
     });
-
-    container.changeContainer('set', 'opentokSession', opentokSession);
-
-    session.subscribeSession();
   }
 
   // Disconnect from opentok session. Do it after destroing publisher.
