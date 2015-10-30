@@ -1,6 +1,6 @@
 {
   "name": "opentok-calls",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "Open Tok library Wrapper to make video calls like in Skype",
   "main": "lib/index.js",
   "scripts": {
