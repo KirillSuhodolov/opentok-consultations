@@ -1,4 +1,5 @@
 import container from './container';
+import isCordova from './is-cordova';
 
 let publisher = {
   publish() {
@@ -11,14 +12,26 @@ let publisher = {
     if (!container.opentokSession || !container.isSessionConnected) {
       console.error("Can't create publisher, owning to session is disconnected."); return;
     }
+    
+    let publisher;
 
-    let publisher = OT.initPublisher(targetElement, params, function(error) {
-      if (error) {
-        console.error("Error when trying to create publisher.", error);
-      } else {
-        console.debug("Publisher created.");
-      }
-    });
+    if (isCordova()) {
+      publisher = OT.initPublisher(this.opentokCalls.configs.apiKey, targetElement, params, function(error) {
+        if (error) {
+          console.error("Error when trying to create publisher.", error);
+        } else {
+          console.debug("Publisher created.");
+        }
+      });
+    } else {
+      publisher = OT.initPublisher(targetElement, params, function(error) {
+        if (error) {
+          console.error("Error when trying to create publisher.", error);
+        } else {
+          console.debug("Publisher created.");
+        }
+      });
+    }
 
     container.changeContainer('set', 'publisher', publisher);
 
@@ -54,6 +67,7 @@ let publisher = {
   },
 
   publishToSession() {
+    // Callback not run at cordova ios
     container.opentokSession.publish(container.publisher, null, function(error){
       if (error) {
         console.error("Publishing to session error: ", error);

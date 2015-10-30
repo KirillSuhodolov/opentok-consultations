@@ -99,6 +99,9 @@ class OpentokCalls extends EventEmitter {
     if (!sessionId || !token) { console.error("SessionId or token empty."); return; }
     if (container.opentokSession) { console.error("Connection to session already created"); }
 
+    this.configs.sessionId = sessionId;
+    this.configs.token = token;
+
     let opentokSession = session.createSession(sessionId);
 
     container.changeContainer('set', 'opentokSession', opentokSession);
